@@ -9,7 +9,7 @@ PatenteBot is a Telegram bot designed to assist users in preparing for the itali
 - **Access Theory**: Get access to theory based on quiz questions.
 
 ## How to Use
-1. **Starting the Bot**: Start a chat with the bot on Telegram by searching for [@PatenteBot](t.me/Casarotto_5CII_Bot).
+1. **Starting the Bot**: Start a chat with the bot on Telegram by searching for [@Casarotto_5CII_Bot](t.me/Casarotto_5CII_Bot).
 2. **Available Commands**:
    - `/start`: Start a conversation with the bot and receive a welcome message.
    - `/help`: List all commands
