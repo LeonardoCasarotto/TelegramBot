@@ -20,6 +20,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 
 public class CasarottoBot extends TelegramLongPollingBot {
@@ -209,10 +214,44 @@ public class CasarottoBot extends TelegramLongPollingBot {
                 if(currentQuestion<totalQuestions&&quizInProgress){
                     presentNextQuestion(currentQuestion, totalQuestions);}
 
-                else{
+                else if(totalQuestions>0){
+
                     SendMessage toSend = new SendMessage();
                     toSend.setText("Hai terminato il quiz, facendo "+ mistakes+" errori");
                     Send(toSend);
+
+                    String url = "jdbc:mysql://localhost:3306/patenteBot";
+                    String username = "root";
+                    String password = "";
+
+                    String query = "INSERT INTO mistakes (chatId, date, mistakes, totalQuestions) VALUES (?, NOW(), ?, ?)";
+
+                    try (
+
+                            Connection conn = DriverManager.getConnection(url, username, password);
+
+                            PreparedStatement ps = conn.prepareStatement(query)
+                    ) {
+
+                        ps.setLong(1, chatId);
+                        ps.setInt(2, mistakes);
+                        ps.setInt(3, totalQuestions);
+
+
+
+                        int rowsAffected = ps.executeUpdate();
+
+                        if (rowsAffected == 0) {
+                            System.out.println("Nothing inserted");
+
+                        }
+
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
 
 
