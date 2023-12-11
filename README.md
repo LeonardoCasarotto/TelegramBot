@@ -8,6 +8,10 @@ PatenteBot is a Telegram bot designed to assist users in preparing for the itali
 - **Quiz on All Topics**: Take quizzes covering all exam topics.
 - **Access Theory**: Get access to theory based on quiz questions.
 
+## Getting started - Database
+The only information you need to know if you want to use the source code is where to find the mysql database file:<br>
+<b>./assets/mistakes.sql </b>
+
 ## How to Use
 1. **Starting the Bot**: Start a chat with the bot on Telegram by searching for [@Casarotto_5CII_Bot](https://t.me/Casarotto_5CII_Bot).
 2. **Available Commands**:
